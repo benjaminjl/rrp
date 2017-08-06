@@ -1,14 +1,46 @@
 <ion-header>
+
   <ion-navbar>
+
     <ion-title>
-      Ionic Blank
+
+      <h1>Rain Reality</h1>
+
     </ion-title>
+
+    <ion-toolbar>
+
+      <ion-grid>
+        
+        <ion-row>
+          
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Home</ion-col>
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1 (click)="openBuildPage()">Build</ion-col>
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Browse</ion-col>
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>About</ion-col>
+        
+        </ion-row>
+      
+      </ion-grid>
+
+    </ion-toolbar>
+
   </ion-navbar>
+
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+
+  <h3 margin>Build a New Project</h3>
+  <div margin text-center class="project" (click)="openBuildPage()">
+    <div style="background-color: #dddddd" class="project-icon">Add +</div>
+  </div>
+  
+  <h3 margin>Current Projects</h3>
+  <div margin class="project" *ngFor="let item of projects" (click)="loadProject(item)">
+
+    <div class="project-icon">{{ item.projectName }}</div>
+
+  </div>
+
 </ion-content>

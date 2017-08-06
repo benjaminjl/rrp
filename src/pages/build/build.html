@@ -1,0 +1,104 @@
+<ion-header>
+
+  <ion-navbar>
+
+    <ion-title>
+
+      <h1>Rain Reality</h1>
+
+    </ion-title>
+
+    <ion-toolbar>
+
+      <ion-grid>
+        
+        <ion-row>
+
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1 (click)="openHomePage()">Home</ion-col>
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Build</ion-col>
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>Browse</ion-col>
+          <ion-col style="color: #ffffff; background-color:#4f465a; border-radius: 5px;" margin-right text-center col-1>About</ion-col>
+        
+        </ion-row>
+      
+      </ion-grid>
+
+    </ion-toolbar>
+
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+
+  <h3 margin>Build Project</h3>
+
+<ion-grid>
+
+  <ion-row>
+
+    <ion-col col-3 padding>
+
+      
+
+      <ion-list>
+
+        <ion-item padding-bottom>
+          <ion-label color="primary" stacked>Add Title</ion-label>
+          <ion-input [(ngModel)]="title" type="text" placeholder="..."></ion-input>
+        </ion-item>
+
+        <ion-item paddin-top>
+          <ion-label color="primary" stacked>Add Object</ion-label>
+          <ion-input [(ngModel)]="objectName" type="search" placeholder="..."></ion-input>
+        </ion-item>
+
+        <ion-item padding-bottom>
+          <p padding *ngFor="let item of objects  | objectFilter: objectName;" (click)="updateObject(item)">{{ item.objectName }}</p>
+        </ion-item>
+
+        <ion-item padding-top>
+          <ion-label color="primary" stacked>Add Top Text</ion-label>
+          <ion-input [(ngModel)]="topText" type="text" placeholder="..."></ion-input>
+        </ion-item>
+        
+        <ion-item padding-top padding-bottom>
+          <ion-label color="primary" stacked>Add Bottom Text</ion-label>
+          <ion-input [(ngModel)]="bottomText" type="text" placeholder="..."></ion-input>
+        </ion-item>
+
+        <ion-item padding-top>
+          <ion-label color="primary" stacked>Author</ion-label>
+          <ion-input [(ngModel)]="author" type="text" placeholder="..."></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label color="primary" stacked>Project Name</ion-label>
+          <ion-input [(ngModel)]="projectName" type="text" placeholder="..."></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      <button *ngIf="!activeProject && object" ion-button (click)="saveProject()">Save Project</button>
+      <button *ngIf="activeProject && object" ion-button (click)="updateProject()">Update Project</button>
+
+    </ion-col>
+
+    <ion-col padding margin>
+
+      <div id="div-container">
+
+        <div text-center padding class="project-title">{{ title }}</div>
+        <div padding text-wrap class="project-top-text">{{ topText }}</div>
+        <div padding text-wrap class="project-bottom-text">{{ bottomText }}</div>
+
+      </div>
+
+    </ion-col>
+
+  </ion-row>
+
+</ion-grid>
+
+
+</ion-content>
