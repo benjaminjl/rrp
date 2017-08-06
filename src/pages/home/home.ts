@@ -33,8 +33,6 @@ ionViewDidLoad() {
 
 	this.projects = this.globalVars.getProjects();
 
-	console.log(this.projects)
-
         
 }
 

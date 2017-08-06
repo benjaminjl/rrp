@@ -106,7 +106,7 @@ openHomePage(){
 saveProject(){
 
 	this.projects.push(
-	{	id:3,
+	{	id:this.projects.length+1,
 		title:this.title,
 		object:this.object,
 		topText:this.topText,
@@ -117,20 +117,19 @@ saveProject(){
 
 	this.globalVars.setProjects(this.projects);
 
-	console.log(this.projects);
-
 	this.app.getRootNav().setRoot(HomePage);
 }
 
 updateProject(){
 
-	console.log(this.activeProject.id)
 
-	for ( var i = 0; i < this.projects.length - 1; i++){
+	for ( var i = 0; i < this.projects.length; i++){
+
 
 		if (this.projects[i].id === this.activeProject.id){
 
-			this.projects[i] = {	id:3,
+			this.projects[i] = {
+				id:this.projects[i].id,
 				title:this.title,
 				object:this.object,
 				topText:this.topText,
@@ -144,8 +143,6 @@ updateProject(){
 	}
 
 	this.globalVars.setProjects(this.projects);
-
-	console.log(this.projects)
 
 	this.app.getRootNav().setRoot(HomePage);
 
