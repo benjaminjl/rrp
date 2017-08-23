@@ -39,53 +39,54 @@
 
     <ion-col col-3 padding>
 
-      <ion-list>
+        <button *ngIf="!activeProject" item-right ion-button (click)="back()">Back</button>
+        <button *ngIf="!activeProject" item-right ion-button (click)="next()">Next</button>  
 
-        <ion-item *ngIf="addingProjectInfo">
+      <ion-list padding-top>
+
+        <ion-item *ngIf="addingProjectInfo || activeProject">
           <ion-label color="primary" stacked>Project Name</ion-label>
           <ion-input [(ngModel)]="projectName" type="text" placeholder="..."></ion-input>
         </ion-item>
 
-        <ion-item *ngIf="addingProjectInfo" padding-top>
+        <ion-item *ngIf="addingProjectInfo || activeProject">
           <ion-label color="primary" stacked>Author</ion-label>
           <ion-input [(ngModel)]="author" type="text" placeholder="..."></ion-input>
         </ion-item>
 
 
 
-        <ion-item *ngIf="addingTitle" padding-bottom>
+        <ion-item *ngIf="addingTitle || activeProject">
           <ion-label color="primary" stacked>Add Title</ion-label>
           <ion-input [(ngModel)]="title" type="text" placeholder="..."></ion-input>
         </ion-item>
 
 
 
-        <ion-item *ngIf="addingObject" paddin-top>
+        <ion-item *ngIf="addingObject || activeProject">
           <ion-label color="primary" stacked>Add Object</ion-label>
           <ion-input [(ngModel)]="objectName" type="search" placeholder="..."></ion-input>
         </ion-item>
 
-        <ion-item *ngIf="addingObject" padding-bottom>
+        <ion-item *ngIf="addingObject || activeProject">
           <p padding *ngFor="let item of objects  | objectFilter: objectName;" (click)="updateObject(item)">{{ item.objectName }}</p>
         </ion-item>
 
 
 
-        <ion-item *ngIf="addingText" padding-top>
+        <ion-item *ngIf="addingText || activeProject">
           <ion-label color="primary" stacked>Add Top Text</ion-label>
           <ion-input [(ngModel)]="topText" type="text" placeholder="..."></ion-input>
         </ion-item>
         
 
 
-        <ion-item *ngIf="addingText" padding-top padding-bottom>
+        <ion-item *ngIf="addingText || activeProject">
           <ion-label color="primary" stacked>Add Bottom Text</ion-label>
           <ion-input [(ngModel)]="bottomText" type="text" placeholder="..."></ion-input>
         </ion-item>
 
       </ion-list>
-
-      <button item-right ion-button (click)="next()">Next</button>
 
       <button *ngIf="!activeProject && object" ion-button (click)="saveProject()">Save Project</button>
       <button *ngIf="activeProject && object" ion-button (click)="updateProject()">Update Project</button>

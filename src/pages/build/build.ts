@@ -33,6 +33,12 @@ projectName: any;
 
 activeProject: any;
 
+addingProjectInfo: boolean = true;
+addingTitle: boolean;
+addingObject: boolean;
+addingText: boolean;
+
+
   constructor(
 	  
 	public navCtrl: NavController,
@@ -183,6 +189,66 @@ loadProject(){
 	this.projectName = this.activeProject.projectName;
 
 
+}
+
+next() {
+
+	if (this.addingProjectInfo === true){
+
+		this.addingProjectInfo = false;
+		this.addingTitle = true;
+
+	}
+
+	else if (this.addingTitle === true){
+
+		this.addingObject = true;
+		this.addingTitle = false;
+
+	}
+
+	else if (this.addingObject === true){
+
+		this.addingText = true;
+		this.addingObject = false;
+
+	}
+	
+	else if (this.addingText === true){
+
+
+	}
+
+}
+
+back() {
+
+	if (this.addingText === true){
+
+		this.addingObject = true;
+		this.addingText = false;
+
+	}
+
+	else if (this.addingObject === true){
+		
+		this.addingTitle = true;
+		this.addingObject = false;
+
+	}
+
+	else if (this.addingTitle === true){
+		
+		this.addingProjectInfo = true;
+		this.addingTitle = false;
+		
+	}
+
+	else if (this.addingProjectInfo === true){
+
+
+	}
+	
 }
 
 }
